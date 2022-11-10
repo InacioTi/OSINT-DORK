@@ -1,0 +1,232 @@
+<html><head>
+<meta content="text/html; charset=utf-8">
+<title>OSINT DORK</title>
+<meta name="author" content="Inaciot" />
+<meta name="referrer" content="never">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="SHORTCUT ICON" href="imgs/icon/lupa.png">
+<link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
+<script src="static/js/dorks_it.js"></script>
+<!–By InacioT
+Thank Mr.Koanti for Shodan-Dork and Github-Dork and Thank faisalahmed for google dorks
+ –>
+
+<style>
+body {
+  background-image: url(imgs/back.jpg);
+  color:#FFF;
+  font-size: 14pt;
+    font-family:"Merienda One";
+  font-weight: bold;
+  padding: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 30%;
+  padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.row {
+  padding: 30px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+canvas {
+  height: 100vh;
+  z-index: -10;
+  position: fixed;
+  top: 0px;
+}
+
+a {
+color:#fff;
+text-decoration:none;
+}
+a:hover {
+color:#DA4932;
+}
+hr {border: 2;width: 50%;}
+
+input{
+  overflow: hidden;
+  color:#FFF;
+        background: transparent;
+  border-radius:5px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border: 1px solid;
+  font-family:Arial,sans-serif;
+  font-size:16px;
+  font-weight:700;
+  height:32px;
+  padding:4px 16px;
+}
+</style>
+</head><body>
+<script>
+    function check_submit(e) {
+        if (e && e.keyCode == 13 && e.target.type != 'textarea') {
+            e.preventDefault();
+            e.defaultPrevented = true;
+
+            if($('#tool-form').valid() == true) {
+                if ($('#security-check').is(':visible') == true) {
+                    document.getElementById('tool-form').submit();
+            }
+        }
+    }
+  }
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-100953906-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<div id="particles-js">
+<div style="font-family: Magnat;text-align: center;font-size: 25pt;text-shadow: 0 0 6px #0d0d0d, 0 0 5px #0d0d0d, 0 0 5px #0d0d0d;color: #1a2c61">OSINT DORK<br></div><br/>
+<div onkeypress="check_submit(event)">
+        
+<form novalidate="novalidate" onsubmit="return false" id="tool-form" role="form" method="GET" action="/" target="response-frame">
+<input name="p" value="tool" type="hidden">
+<input name="t" value="10" type="hidden">
+<input name="act" value="exec" type="hidden">
+<script>
+document.getElementById('tool-form').setAttribute('onsubmit', 'return false');
+check_submit = function(event) {};
+</script>
+<script>
+function osint_it(type) 
+{
+    if($('#tool-form').valid() == false) {
+        return;
+    }
+    
+    site = document.getElementById('target').value;
+    if (site.indexOf('://') > 0) {
+        site = site.substr(site.indexOf('://')+3);
+    }                            
+    url = 'https://www.google.com/search?q=';
+    url += 'site:' + site;
+
+switch(type)
+{
+    case 1:
+        url += '+intitle:index.of';
+        break;
+}
+    window.open(url);
+
+}
+</script>
+
+<div style="text-align: center;"><b>Dominio:</b>
+
+<input id="target" name="target" placeholder="site.com" autofocus="" type="text"><br/></div>
+
+<div class="row">
+  <div class="column"><div style="text-align: center;">
+    <div style="display: inline-block; text-align: left;">
+      <p>Google Dork</p>
+        &#128269; <a href="#" onclick="google_it(1)">Vulnerabilidades de listagem de diretório</a><br/> 
+        &#128269; <a href="#" onclick="google_it(2)">Arquivos de configuração expostos</a><br/> 
+        &#128269; <a href="#" onclick="google_it(3)">Encontre o WordPress</a><br/> 
+        &#128269; <a href="#" onclick="google_it(4)">Arquivos de log expostos</a><br/> 
+        &#128269; <a href="#" onclick="google_it(5)">Backup e arquivos antigos</a><br/>
+        &#128269; <a href="#" onclick="google_it(6)">Páginas de login</a><br/>
+        &#128269; <a href="#" onclick="google_it(7)">SQL errors</a><br/>
+        &#128269; <a href="#" onclick="google_it(8)">Documentos expostos publicamente</a><br/>
+        &#128269; <a href="#" onclick="google_it(9)">phpinfo()</a><br/>
+        &#128269; <a href="#" onclick="google_it(10)">Pesquisar no WayBack Machine [Lista/Todos]</a><br/>
+        &#128269; <a href="#" onclick="google_it(11)">Arquivos de instalação/configuração</a><br/>
+        &#128269; <a href="#" onclick="google_it(12)">Localizar entradas do Pastebin</a><br/>
+        &#128269; <a href="#" onclick="google_it(13)">Funcionários no LINKEDIN</a><br/>
+    </div>
+  </div>
+</div>
+
+<div class="column"><div style="text-align: center;">
+    <div style="display: inline-block; text-align: left;">
+      <p>Github Dork</p>
+          &#128269; <a href="#" onclick="github_it(1)">api_key</a><br/>  
+          &#128269; <a href="#" onclick="github_it(2)">app_AWS_SECRET_ACCESS_KEY </a><br/>
+          &#128269; <a href="#" onclick="github_it(3)">app_secret</a><br/> 
+          &#128269; <a href="#" onclick="github_it(4)">token</a><br/> 
+          &#128269; <a href="#" onclick="github_it(5)">composer</a><br/>
+          &#128269; <a href="#" onclick="github_it(6)">config</a><br/>
+          &#128269; <a href="#" onclick="github_it(7)">credentials</a><br/>
+          &#128269; <a href="#" onclick="github_it(8)">DB_PASSWORD</a><br/>
+          &#128269; <a href="#" onclick="github_it(9)">.env file</a><br/>
+          &#128269; <a href="#" onclick="github_it(24)">filename:.bash_history</a><br/>
+          &#128269; <a href="#" onclick="github_it(25)">filename:.bash_profile aws</a><br/>
+          &#128269; <a href="#" onclick="github_it(26)">filename:.bashrc mailchimp</a><br/>
+          &#128269; <a href="#" onclick="github_it(27)">filename:CCCam.cfg</a><br/>
+          &#128269; <a href="#" onclick="github_it(28)">filename:config irc_pass</a><br/>
+          &#128269; <a href="#" onclick="github_it(29)">filename:config.php dbpasswd</a><br/>
+          &#128269; <a href="#" onclick="github_it(30)">filename:config.json auths</a><br/>
+          &#128269; <a href="#" onclick="github_it(31)">filename:config.php pass</a><br/>
+          &#128269; <a href="#" onclick="github_it(32)">filename:config.php dbpasswd</a><br/>
+          &#128269; <a href="#" onclick="github_it(33)">filename:connections.xml</a><br/>
+          &#128269; <a href="#" onclick="github_it(35)">filename:.git-credentials</a><br/>
+          &#128269; <a href="#" onclick="github_it(36)">filename:.ftpconfig</a><br/>
+          &#128269; <a href="#" onclick="github_it(40)">filename:id_rsa</a><br/>
+
+    </div>
+  </div>
+</div>
+
+<div class="column"><div style="text-align: center;">
+    <div style="display: inline-block; text-align: left;">
+      <p>Shodan</p>
+        &#128269; <a href="#" onclick="shodan_it(1)">defult password</a><br/> 
+        &#128269; <a href="#" onclick="shodan_it(2)">guest login</a><br/> 
+        &#128269; <a href="#" onclick="shodan_it(3)">dashboard</a><br/>
+        &#128269; <a href="#" onclick="shodan_it(4)">control panel</a><br/>
+        &#128269; <a href="#" onclick="shodan_it(5)">phpmyadmin</a><br/>
+        &#128269; <a href="#" onclick="shodan_it(6)">kibana</a><br/>
+        &#128269; <a href="#" onclick="shodan_it(7)">CVE-2021-26855-CVE-2021-31206 Microsoft RCE</a><br/>
+        &#128269; <a href="#" onclick="shodan_it(8)">Cisco ASA CVE-2020-3452</a><br/>
+        &#128269; <a href="#" onclick="shodan_it(9)">Apache Directory Listings</a><br/>
+
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div>
+</form>
+
+<div style="clear: both;"></div>
+
+
+
+<script src="jquery1.js"></script><script src="static/js/jquery.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js'></script>
+<script  src="static/js/bg.js"></script>
+
+<div style="font-family: Merienda One;text-align: center;padding: 7px 0;font-size:10px;">By InacioT
+Thank Mr.Koanti for Shodan-Dork and Github-Dork and Thank faisalahmed for google dorks</div>
+
+</body></html>
